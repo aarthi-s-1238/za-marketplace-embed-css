@@ -1,0 +1,36 @@
+/* ---------------------------------------------------------------------------
+   Zoho Analytics - Marketplace embed overrides
+   Loaded by the embed via its customCss query param.
+
+   Strips Marketplace's own browse chrome inside the Analytics chart chooser so
+   only the app cards remain.
+   --------------------------------------------------------------------------- */
+
+/* The whole filter bar: the filter row (#extnFilterCompn - All Categories /
+   Edition / Price / Rating / Deployment type) and the search box
+   (#searchComponent) are both children of this, so one rule covers both.
+   It is position:fixed and padded to reserve space, which is why hiding the
+   children alone would leave a gap. */
+#filter-bar {
+   
+}
+
+/* "Most used Tags" cloud. */
+#mp-tags-cloud {
+    display: none !important;
+}
+
+/* Outer page wrapper. The padding is set inline in the markup
+   (style="...padding:7.5px 20px 20px 20px"), so overriding it needs !important.
+   No end padding, so the card grid can run to the edge of the panel. */
+.lightGreyBg.box-borderBx {
+    padding: 20px 0px 20px 20px !important;
+}
+
+/* The card grid is pushed down to clear the fixed filter bar - .mT30 in the
+   markup, plus a margin-top the embed's own JS writes inline. With nothing
+   above it any more, pull it back to the top. */
+#extension-listed,
+.non-feature-ui #extension-listed {
+    margin-top: 0 !important;
+}

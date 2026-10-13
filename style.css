@@ -34,3 +34,235 @@
 .non-feature-ui #extension-listed {
     margin-top: 0 !important;
 }
+
+/* Pane-safe base — keep marketplace page filling the iframe */
+    html, body {
+      height: 100%;
+      margin: 0;
+      overflow: auto;
+      background: #f4f4f4;
+      font-family: "Proxima Nova", "Lato", Arial, sans-serif;
+      font-size: 13px;
+      color: #222;
+    }
+    body {
+      width: 100%;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    a[href="#"] { display: none !important; }
+
+    /* Hide browse chrome in the Analytics pane (Style.css leaves #filter-bar empty) */
+    #filter-bar,
+    #mp-tags-cloud,
+    #featured,
+    .editors-pick,
+    #promotion-service-apps,
+    #view-more-extension {
+      display: none !important;
+    }
+
+    .lightGreyBg.box-borderBx {
+      /* auto height so bottom padding scrolls into view with last card */
+      height: auto !important;
+      min-height: 100%;
+      box-sizing: border-box;
+      padding: 16px 20px 20px 20px !important; /* 20px below last card when scrolled */
+      background: #f4f4f4;
+    }
+
+    #extension-listed,
+    .non-feature-ui #extension-listed {
+      margin-top: 0 !important;
+      display: grid !important;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 16px 12px;
+      width: 100%;
+      box-sizing: border-box;
+      padding-right: 0;
+      padding-bottom: 0;
+    }
+
+    #extension-listed .default-card-wrapper {
+      display: block !important;
+      width: 100% !important;
+      max-width: none !important;
+      margin: 0 !important;
+    }
+
+    /* Fallback card layout if CDN skin fails */
+    .box-borderBx { box-sizing: border-box; }
+    .dIB { display: inline-block; }
+    .posrel, .posRel { position: relative; }
+    .positionAbsolute { position: absolute; }
+    .t0 { top: 0; }
+    .left0 { left: 0; }
+    .r0 { right: 0; }
+    .whiteBg { background: #fff; }
+    .mR20 { margin-right: 20px; }
+    .mB20 { margin-bottom: 20px; }
+    .mLR5 { margin-left: 5px; margin-right: 5px; }
+    .mT5 { margin-top: 5px; }
+    .mT4 { margin-top: 4px; }
+    .mT7 { margin-top: 7px; }
+    .m0 { margin: 0; }
+    .pL5 { padding-left: 5px; }
+    .p20 { padding: 20px; }
+    .w100p, .w100P { width: 100%; }
+    .w49per { width: 49%; }
+    .w320 { width: 320px; max-width: calc(100% - 20px); }
+    .h150 { height: 150px; }
+    .h110 { height: 110px; }
+    .lh34 { line-height: 34px; }
+    .lh18 { line-height: 18px; }
+    .lh20 { line-height: 20px; }
+    .f13 { font-size: 13px; }
+    .f14 { font-size: 14px; }
+    .semibold { font-weight: 600; }
+    .vam, .vat { vertical-align: middle; }
+    .alignright { text-align: right; }
+    .singleLineEllips, .one-line {
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+    .bbd1 { border-bottom: 1px solid #e0e0e0; }
+    .op0 { opacity: 0; }
+    .op08 { opacity: 0.8; }
+    .oH { overflow: hidden; }
+    .lightgray1 { color: #d0d0d0; }
+    .colorF5A623 { color: #F5A623; }
+    .mp-stars {
+      display: inline-flex;
+      align-items: center;
+      gap: 1px;
+      vertical-align: middle;
+      color: #d0d0d0;
+      font-size: 11px;
+      line-height: 1;
+      letter-spacing: 0;
+    }
+    .mp-stars__star {
+      display: inline-block;
+      width: 11px;
+      height: 11px;
+      background: currentColor;
+      clip-path: polygon(
+        50% 0%,
+        61% 35%,
+        98% 35%,
+        68% 57%,
+        79% 91%,
+        50% 70%,
+        21% 91%,
+        32% 57%,
+        2% 35%,
+        39% 35%
+      );
+    }
+    .mp-stars__count {
+      margin-left: 4px;
+      color: #959595;
+      font-size: 12px;
+      line-height: 1;
+    }
+    .default-card-wrapper {
+      vertical-align: top;
+      border-radius: 4px;
+      overflow: hidden;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+      background: #fff;
+      transition: box-shadow 160ms ease;
+      cursor: pointer;
+    }
+    .default-card-wrapper:hover {
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.14);
+      z-index: 2;
+    }
+    .default-card-wrapper:hover .secondComp,
+    .default-card-wrapper:hover .mp-hover { opacity: 1; }
+    .mp-hover {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      padding: 16px;
+      background: #fff;
+      opacity: 0;
+      transition: opacity 140ms ease;
+      box-sizing: border-box;
+    }
+    .mp-hover__title {
+      width: 100%;
+      font-size: 15px;
+      font-weight: 700;
+      line-height: 20px;
+      color: #222;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .mp-hover__category {
+      margin-top: 4px;
+      font-size: 13px;
+      font-weight: 400;
+      line-height: 18px;
+      color: #8A8A8A;
+    }
+    .mp-hover__rating {
+      margin-top: 8px;
+    }
+    .mp-hover__rating .mp-stars__count {
+      color: #222;
+      font-size: 13px;
+    }
+    .mp-hover__rating .mp-stars__star {
+      width: 12px;
+      height: 12px;
+    }
+    .mp-hover__desc {
+      margin-top: 8px;
+      font-size: 13px;
+      font-weight: 400;
+      line-height: 18px;
+      color: #222;
+      display: -webkit-box;
+      -webkit-line-clamp: 3;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+    .mp-hover__price {
+      margin-top: auto;
+      align-self: flex-end;
+      font-size: 13px;
+      font-weight: 400;
+      line-height: 18px;
+      color: #8A8A8A;
+    }
+    .default-card-wrapper .h150 {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #F7F9FC;
+    }
+    .default-card-wrapper img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      background: #F7F9FC;
+    }
+    .mp-empty {
+      margin: 24px 20px 0 0;
+      text-align: center;
+      color: #666;
+      font-size: 13px;
+    }
+    .default-card-wrapper[hidden] { display: none !important; }
+    .extn-desc-line-clamp {
+      display: -webkit-box;
+      -webkit-line-clamp: 5;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
